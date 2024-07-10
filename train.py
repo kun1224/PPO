@@ -7,18 +7,29 @@ import torch
 import numpy as np
 
 import gym
-import roboschool
+# import roboschool
 
 from PPO import PPO
 
 ################################### Training ###################################
 def train():
     print("============================================================================================")
+    # # 获取所有注册的环境
+    # all_env_specs = gym.envs.registry.all()
+
+    # # 打印所有环境ID
+    # for env_spec in all_env_specs:
+    #     print(env_spec.id)
 
     ####### initialize environment hyperparameters ######
-    env_name = "RoboschoolWalker2d-v1"
+    # env_name = "RoboschoolWalker2d-v1"
+    # has_continuous_action_space = True  # continuous action space; else discrete
 
-    has_continuous_action_space = True  # continuous action space; else discrete
+    # env_name = "CartPole-v1"
+    # has_continuous_action_space = False
+
+    env_name = "Pendulum-v0"
+    has_continuous_action_space = True
 
     max_ep_len = 1000                   # max timesteps in one episode
     max_training_timesteps = int(3e6)   # break training loop if timeteps > max_training_timesteps
@@ -49,8 +60,16 @@ def train():
     #####################################################
 
     print("training environment name : " + env_name)
-
     env = gym.make(env_name)
+
+    # 检查动作空间类型
+    if isinstance(env.action_space, gym.spaces.Box):
+        print("{} has a continuous action space.",env_name)
+    else:
+        print("{} does not have a continuous action space.",env_name)
+
+    # 输出动作空间的详细信息
+    print("Action Space:", env.action_space)
 
     # state space dimension
     state_dim = env.observation_space.shape[0]

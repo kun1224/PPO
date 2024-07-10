@@ -7,7 +7,7 @@ import torch
 import numpy as np
 
 import gym
-import roboschool
+# import roboschool
 
 from PPO import PPO
 
@@ -33,10 +33,16 @@ def test():
     # max_ep_len = 1500           # max timesteps in one episode
     # action_std = 0.1            # set same std for action distribution which was used while saving
 
-    env_name = "RoboschoolWalker2d-v1"
+    env_name = "Pendulum-v0"
     has_continuous_action_space = True
     max_ep_len = 1000           # max timesteps in one episode
     action_std = 0.1            # set same std for action distribution which was used while saving
+
+
+    # env_name = "RoboschoolWalker2d-v1"
+    # has_continuous_action_space = True
+    # max_ep_len = 1000           # max timesteps in one episode
+    # action_std = 0.1            # set same std for action distribution which was used while saving
 
     render = True              # render environment on screen
     frame_delay = 0             # if required; add delay b/w frames
@@ -96,14 +102,14 @@ def test():
 
             if done:
                 break
-
+            time.sleep(0.01)
         # clear buffer
         ppo_agent.buffer.clear()
 
         test_running_reward +=  ep_reward
         print('Episode: {} \t\t Reward: {}'.format(ep, round(ep_reward, 2)))
         ep_reward = 0
-
+        time.sleep(0.1)
     env.close()
 
     print("============================================================================================")
