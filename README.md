@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PPO-PyTorch
 
 ### UPDATE [April 2021] : 
@@ -109,3 +110,7 @@ Pillow
 - [OpenAI Spinning up](https://spinningup.openai.com/en/latest/)
 
 
+=======
+# PPO
+使用pytorch在gym的游戏上实现PPO算法
+>>>>>>> 7c7660e07c069525c6b2b0e682f3e0c7c2ba88e9
